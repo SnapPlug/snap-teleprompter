@@ -85,15 +85,14 @@ struct TeleprompterOverlay: View {
     // no Canvas clipping risk.
     private var scrollingText: some View {
         GeometryReader { geo in
-            VStack(alignment: .center, spacing: 0) {
+            VStack(alignment: .center, spacing: vm.lineHeight - CGFloat(vm.fontSize)) {
                 ForEach(Array(vm.scriptLines.enumerated()), id: \.offset) { _, line in
                     Text(line)
                         .font(.system(size: CGFloat(vm.fontSize), weight: .medium))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .lineSpacing(vm.lineHeight - CGFloat(vm.fontSize))
+                        .fixedSize(horizontal: false, vertical: true)
                         .frame(width: geo.size.width - 40)
-                        .frame(height: vm.lineHeight)
                 }
             }
             .frame(width: geo.size.width)
