@@ -10,21 +10,31 @@
 
 - macOS 13.0 이상
 - 노치가 있는 맥북 (MacBook Pro 2021년 이후, MacBook Air M2 이후)
-- Xcode 16.0
-- [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`)
+- Xcode 16.0 ([Mac App Store에서 무료 설치](https://apps.apple.com/kr/app/xcode/id497799835))
 
 ---
 
 ## 설치 및 빌드
 
+### 방법 1 — Xcode만 사용 (권장)
+
 ```bash
 git clone https://github.com/SnapPlug/snap-teleprompter.git
 cd snap-teleprompter
-xcodegen generate
 open NotchTeleprompter.xcodeproj
 ```
 
 Xcode에서 **Run** (⌘R) 하면 바로 실행됩니다.
+
+### 방법 2 — XcodeGen 사용 (프로젝트 파일을 직접 수정하고 싶을 때)
+
+`project.yml`을 수정한 뒤 `.xcodeproj`를 재생성할 때 사용합니다.
+
+```bash
+brew install xcodegen
+xcodegen generate
+open NotchTeleprompter.xcodeproj
+```
 
 ---
 
