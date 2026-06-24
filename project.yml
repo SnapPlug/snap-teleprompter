@@ -1,0 +1,35 @@
+name: NotchTeleprompter
+options:
+  bundleIdPrefix: com.snapavatar
+  deploymentTarget:
+    macOS: "13.0"
+  xcodeVersion: "16.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MACOSX_DEPLOYMENT_TARGET: "13.0"
+
+targets:
+  NotchTeleprompter:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources
+        type: group
+    entitlements:
+      path: NotchTeleprompter.entitlements
+    info:
+      path: Info.plist
+      properties:
+        LSMinimumSystemVersion: "13.0"
+        CFBundleName: "Notch Teleprompter"
+        CFBundleDisplayName: "Notch Teleprompter"
+        NSHumanReadableCopyright: "© 2026 snap_avatar"
+        LSUIElement: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.snapavatar.notch-teleprompter
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_HARDENED_RUNTIME: NO
+        SWIFT_VERSION: "5.9"
