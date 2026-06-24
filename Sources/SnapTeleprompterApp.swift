@@ -1,11 +1,11 @@
 import SwiftUI
 
 @main
-struct NotchTeleprompterApp: App {
+struct SnapTeleprompterApp: App {
     @StateObject private var vm = TeleprompterViewModel()
 
     var body: some Scene {
-        WindowGroup("Notch Teleprompter") {
+        WindowGroup("Snap Teleprompter") {
             MainView(vm: vm)
                 .frame(minWidth: 560, minHeight: 480)
         }

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		064FC26FCB2947330DB6AB9C /* NotchWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD8B51EC00E834F3573BD4 /* NotchWindowController.swift */; };
-		0BFC5F9CE1884CED5B68473D /* NotchTeleprompterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556BE0DFB9B4B7A8D10910C4 /* NotchTeleprompterApp.swift */; };
+		0BFC5F9CE1884CED5B68473D /* SnapTeleprompterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556BE0DFB9B4B7A8D10910C4 /* SnapTeleprompterApp.swift */; };
 		214AE9E7B6DA8387DB5336EA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED22EF2487712E9E1758A6 /* MainView.swift */; };
 		65D4C39A8E56E13ADDBD2F4F /* TeleprompterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E68B66825ECC4EC12E575C /* TeleprompterViewModel.swift */; };
 		FA73D96DABDCE3538B4B80E1 /* TeleprompterOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D273D07C770AC25E174BAD /* TeleprompterOverlay.swift */; };
@@ -16,8 +16,8 @@
 
 /* Begin PBXFileReference section */
 		24D273D07C770AC25E174BAD /* TeleprompterOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterOverlay.swift; sourceTree = "<group>"; };
-		3D11004F167D00812DF83507 /* NotchTeleprompter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotchTeleprompter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		556BE0DFB9B4B7A8D10910C4 /* NotchTeleprompterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchTeleprompterApp.swift; sourceTree = "<group>"; };
+		3D11004F167D00812DF83507 /* SnapTeleprompter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapTeleprompter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		556BE0DFB9B4B7A8D10910C4 /* SnapTeleprompterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapTeleprompterApp.swift; sourceTree = "<group>"; };
 		7BED22EF2487712E9E1758A6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		86CD8B51EC00E834F3573BD4 /* NotchWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchWindowController.swift; sourceTree = "<group>"; };
 		92E68B66825ECC4EC12E575C /* TeleprompterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterViewModel.swift; sourceTree = "<group>"; };
@@ -27,7 +27,7 @@
 		301580E1B3ECE277517BCFA6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3D11004F167D00812DF83507 /* NotchTeleprompter.app */,
+				3D11004F167D00812DF83507 /* SnapTeleprompter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -44,7 +44,7 @@
 			isa = PBXGroup;
 			children = (
 				7BED22EF2487712E9E1758A6 /* MainView.swift */,
-				556BE0DFB9B4B7A8D10910C4 /* NotchTeleprompterApp.swift */,
+				556BE0DFB9B4B7A8D10910C4 /* SnapTeleprompterApp.swift */,
 				86CD8B51EC00E834F3573BD4 /* NotchWindowController.swift */,
 				24D273D07C770AC25E174BAD /* TeleprompterOverlay.swift */,
 				92E68B66825ECC4EC12E575C /* TeleprompterViewModel.swift */,
@@ -55,9 +55,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		39AF725C18C3BC4AD9ED9D9C /* NotchTeleprompter */ = {
+		39AF725C18C3BC4AD9ED9D9C /* SnapTeleprompter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 96BBEEA80D7F334CDB75BBDF /* Build configuration list for PBXNativeTarget "NotchTeleprompter" */;
+			buildConfigurationList = 96BBEEA80D7F334CDB75BBDF /* Build configuration list for PBXNativeTarget "SnapTeleprompter" */;
 			buildPhases = (
 				9577E5D6A3716608D46467DB /* Sources */,
 			);
@@ -65,11 +65,11 @@
 			);
 			dependencies = (
 			);
-			name = NotchTeleprompter;
+			name = SnapTeleprompter;
 			packageProductDependencies = (
 			);
-			productName = NotchTeleprompter;
-			productReference = 3D11004F167D00812DF83507 /* NotchTeleprompter.app */;
+			productName = SnapTeleprompter;
+			productReference = 3D11004F167D00812DF83507 /* SnapTeleprompter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -86,7 +86,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 77E89E359D98818E5F87DAF6 /* Build configuration list for PBXProject "NotchTeleprompter" */;
+			buildConfigurationList = 77E89E359D98818E5F87DAF6 /* Build configuration list for PBXProject "SnapTeleprompter" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -100,7 +100,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				39AF725C18C3BC4AD9ED9D9C /* NotchTeleprompter */,
+				39AF725C18C3BC4AD9ED9D9C /* SnapTeleprompter */,
 			);
 		};
 /* End PBXProject section */
@@ -111,7 +111,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				214AE9E7B6DA8387DB5336EA /* MainView.swift in Sources */,
-				0BFC5F9CE1884CED5B68473D /* NotchTeleprompterApp.swift in Sources */,
+				0BFC5F9CE1884CED5B68473D /* SnapTeleprompterApp.swift in Sources */,
 				064FC26FCB2947330DB6AB9C /* NotchWindowController.swift in Sources */,
 				FA73D96DABDCE3538B4B80E1 /* TeleprompterOverlay.swift in Sources */,
 				65D4C39A8E56E13ADDBD2F4F /* TeleprompterViewModel.swift in Sources */,
@@ -181,7 +181,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = NotchTeleprompter.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SnapTeleprompter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_HARDENED_RUNTIME = NO;
@@ -190,7 +190,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.snapavatar.notch-teleprompter";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.snapavatar.snap-teleprompter";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.9;
 			};
@@ -200,7 +200,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = NotchTeleprompter.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SnapTeleprompter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_HARDENED_RUNTIME = NO;
@@ -209,7 +209,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.snapavatar.notch-teleprompter";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.snapavatar.snap-teleprompter";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.9;
 			};
@@ -281,7 +281,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		77E89E359D98818E5F87DAF6 /* Build configuration list for PBXProject "NotchTeleprompter" */ = {
+		77E89E359D98818E5F87DAF6 /* Build configuration list for PBXProject "SnapTeleprompter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FE23B641D972123C1716B09B /* Debug */,
@@ -290,7 +290,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		96BBEEA80D7F334CDB75BBDF /* Build configuration list for PBXNativeTarget "NotchTeleprompter" */ = {
+		96BBEEA80D7F334CDB75BBDF /* Build configuration list for PBXNativeTarget "SnapTeleprompter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4BC0F0315368AA73A70ED45D /* Debug */,

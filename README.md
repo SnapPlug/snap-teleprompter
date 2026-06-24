@@ -1,4 +1,4 @@
-# Notch Teleprompter
+# Snap Teleprompter
 
 맥북 노치 영역에 대본을 흘려보내는 텔레프롬프터 앱입니다.
 
@@ -21,7 +21,7 @@
 ```bash
 git clone https://github.com/SnapPlug/snap-teleprompter.git
 cd snap-teleprompter
-open NotchTeleprompter.xcodeproj
+open SnapTeleprompter.xcodeproj
 ```
 
 Xcode에서 **Run** (⌘R) 하면 바로 실행됩니다.
@@ -33,7 +33,7 @@ Xcode에서 **Run** (⌘R) 하면 바로 실행됩니다.
 ```bash
 brew install xcodegen
 xcodegen generate
-open NotchTeleprompter.xcodeproj
+open SnapTeleprompter.xcodeproj
 ```
 
 ---

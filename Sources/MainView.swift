@@ -44,7 +44,7 @@ struct MainView: View {
             Image(systemName: "rectangle.topthird.inset.filled")
                 .font(.title2)
                 .foregroundColor(.primary)
-            Text("Notch Teleprompter")
+            Text("Snap Teleprompter")
                 .font(.headline)
 
             Spacer()
