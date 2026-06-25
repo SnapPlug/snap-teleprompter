@@ -23,6 +23,7 @@ final class TeleprompterViewModel: ObservableObject {
 
     private var displayLink: AnyCancellable?
     private var lastTimestamp: CFTimeInterval = 0
+    private var cancellables = Set<AnyCancellable>()
 
     // Key monitors — both managed here so VM owns all state
     private var localKeyMonitor: Any?
@@ -35,6 +36,18 @@ final class TeleprompterViewModel: ObservableObject {
 
     // Total window height including menu bar (set by NotchWindowController)
     var windowHeight: CGFloat = 147
+
+    init() {
+        // Re-wrap lines whenever script is edited while the notch is open
+        $scriptText
+            .dropFirst()
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .sink { [weak self] _ in
+                guard let self, self.notchVisible else { return }
+                self.scriptLines = self.wrapScript(self.scriptText, maxWidth: self.panelWidth - 40)
+            }
+            .store(in: &cancellables)
+    }
 
     var lineHeight: CGFloat { CGFloat(fontSize) * 1.65 }
 
@@ -185,7 +198,7 @@ final class TeleprompterViewModel: ObservableObject {
         lastTimestamp = now
         verticalOffset -= pixelsPerSecond * dt
         let totalHeight = CGFloat(scriptLines.count) * lineHeight
-        if verticalOffset < -(totalHeight + 20) {
+        if verticalOffset < -(totalHeight + windowHeight) {
             isRunning = false
             stopTicker()
         }
