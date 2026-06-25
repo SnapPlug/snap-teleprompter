@@ -72,7 +72,7 @@ struct MainView: View {
             sliderControl(
                 label: "속도",
                 value: $vm.wordsPerMinute,
-                range: 60...280,
+                range: 20...280,
                 display: "\(Int(vm.wordsPerMinute)) WPM",
                 width: 150
             )

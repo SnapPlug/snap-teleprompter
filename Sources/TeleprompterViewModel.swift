@@ -49,7 +49,7 @@ final class TeleprompterViewModel: ObservableObject {
     }
 
     func decreaseSpeed() {
-        wordsPerMinute = max(60, wordsPerMinute - 10)
+        wordsPerMinute = max(20, wordsPerMinute - 10)
     }
 
     // MARK: - File loading
