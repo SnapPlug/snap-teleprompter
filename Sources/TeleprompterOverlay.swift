@@ -54,10 +54,21 @@ struct TeleprompterOverlay: View {
                 Spacer()
             }
 
-            // Status indicator: green dot while running, pause icon while paused
+            // Top-left: quit button / Top-right: status indicator
             VStack {
                 HStack {
+                    // × quit button — always visible, left side
+                    Button(action: { NSApplication.shared.terminate(nil) }) {
+                        Text("×")
+                            .font(.system(size: 13, weight: .medium))
+                            .foregroundColor(.white.opacity(0.35))
+                            .frame(width: 20, height: 20)
+                    }
+                    .buttonStyle(.plain)
+                    .padding(6)
+
                     Spacer()
+
                     if vm.isRunning {
                         Circle()
                             .fill(Color.green)
@@ -74,7 +85,7 @@ struct TeleprompterOverlay: View {
             }
         }
         .clipShape(BottomRoundedRect(radius: 14))
-        // Tap to pause / resume
+        // Tap to pause / resume (ignore taps on the quit button area)
         .onTapGesture {
             guard !vm.scriptLines.isEmpty else { return }
             vm.togglePause()

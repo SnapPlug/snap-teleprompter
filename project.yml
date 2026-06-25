@@ -17,6 +17,8 @@ targets:
     sources:
       - path: Sources
         type: group
+      - path: Resources
+        type: folder
     entitlements:
       path: SnapTeleprompter.entitlements
     info:
@@ -26,6 +28,7 @@ targets:
         CFBundleName: "Snap Teleprompter"
         CFBundleDisplayName: "Snap Teleprompter"
         NSHumanReadableCopyright: "© 2026 snap_avatar"
+        CFBundleIconFile: "AppIcon"
         LSUIElement: false
     settings:
       base:

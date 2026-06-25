@@ -32,6 +32,12 @@ swiftc \
 
 cp Info.plist "${BUNDLE}/Contents/Info.plist"
 
+# Copy app icon
+if [ -f "Resources/AppIcon.icns" ]; then
+    mkdir -p "${BUNDLE}/Contents/Resources"
+    cp Resources/AppIcon.icns "${BUNDLE}/Contents/Resources/AppIcon.icns"
+fi
+
 echo "✓ ${BUNDLE} 생성 완료"
 echo "  실행: open ${BUNDLE}"
 echo ""
