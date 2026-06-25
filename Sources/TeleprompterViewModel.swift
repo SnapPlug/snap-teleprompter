@@ -204,14 +204,89 @@ final class TeleprompterViewModel: ObservableObject {
         }
     }
 
-    // MARK: - Text pre-wrapping (CoreText)
+    // MARK: - Estimated presentation time (F10)
+
+    var estimatedDuration: String {
+        let words = scriptText
+            .split(whereSeparator: { $0.isWhitespace || $0.isNewline })
+            .count
+        guard words > 0 else { return "" }
+        let totalSeconds = Int(Double(words) / wordsPerMinute * 60)
+        if totalSeconds < 60 {
+            return "약 \(totalSeconds)초"
+        }
+        let min = totalSeconds / 60
+        let sec = totalSeconds % 60
+        if min >= 60 {
+            let hr = min / 60
+            let rem = min % 60
+            return rem > 0 ? "약 \(hr)시간 \(rem)분" : "약 \(hr)시간"
+        }
+        return sec > 0 ? "약 \(min)분 \(sec)초" : "약 \(min)분"
+    }
+
+    // MARK: - Text pre-wrapping (sentence-aware + CoreText) (F9)
 
     private func wrapScript(_ text: String, maxWidth: CGFloat) -> [String] {
-        let paragraphs = text
-            .components(separatedBy: .newlines)
+        text
+            .components(separatedBy: "\n")
             .map { $0.trimmingCharacters(in: .whitespaces) }
             .filter { !$0.isEmpty }
-        return paragraphs.flatMap { wrapParagraph($0, maxWidth: maxWidth) }
+            .flatMap { sentenceAwareWrap($0, maxWidth: maxWidth) }
+    }
+
+    // Split a line at sentence boundaries, merge short chunks, then CoreText-wrap
+    private func sentenceAwareWrap(_ text: String, maxWidth: CGFloat) -> [String] {
+        let sentences = splitAtSentences(text)
+        let merged = mergeSentences(sentences, maxWidth: maxWidth)
+        return merged.flatMap { wrapParagraph($0, maxWidth: maxWidth) }
+    }
+
+    // Break at terminal punctuation followed by whitespace
+    private func splitAtSentences(_ text: String) -> [String] {
+        guard let regex = try? NSRegularExpression(pattern: "(?<=[.!?。？！])\\s+") else {
+            return [text]
+        }
+        let ns = text as NSString
+        let fullRange = NSRange(location: 0, length: ns.length)
+        var parts: [String] = []
+        var cursor = 0
+
+        for match in regex.matches(in: text, range: fullRange) {
+            let partRange = NSRange(location: cursor, length: match.range.location - cursor)
+            let part = ns.substring(with: partRange).trimmingCharacters(in: .whitespaces)
+            if !part.isEmpty { parts.append(part) }
+            cursor = match.range.location + match.range.length
+        }
+        let tail = ns.substring(from: cursor).trimmingCharacters(in: .whitespaces)
+        if !tail.isEmpty { parts.append(tail) }
+
+        return parts.isEmpty ? [text] : parts
+    }
+
+    // Merge consecutive short sentences (< 40% of panel width) to avoid sparse lines
+    private func mergeSentences(_ sentences: [String], maxWidth: CGFloat) -> [String] {
+        let minWidth = maxWidth * 0.4
+        var result: [String] = []
+        var buffer = ""
+
+        for sentence in sentences {
+            if buffer.isEmpty {
+                buffer = sentence
+            } else if measureTextWidth(buffer) < minWidth {
+                buffer += " " + sentence
+            } else {
+                result.append(buffer)
+                buffer = sentence
+            }
+        }
+        if !buffer.isEmpty { result.append(buffer) }
+        return result
+    }
+
+    private func measureTextWidth(_ text: String) -> CGFloat {
+        let font = NSFont.systemFont(ofSize: CGFloat(fontSize), weight: .medium)
+        return (text as NSString).size(withAttributes: [.font: font]).width
     }
 
     private func wrapParagraph(_ text: String, maxWidth: CGFloat) -> [String] {

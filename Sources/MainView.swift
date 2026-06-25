@@ -91,6 +91,17 @@ struct MainView: View {
                 width: 110
             )
 
+            if !vm.estimatedDuration.isEmpty {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("예상 발표 시간")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Text(vm.estimatedDuration)
+                        .font(.caption)
+                        .foregroundColor(.primary)
+                }
+            }
+
             Spacer()
 
             playbackButtons
