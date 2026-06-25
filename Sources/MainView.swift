@@ -62,6 +62,12 @@ struct MainView: View {
             }
             .buttonStyle(.bordered)
             .tint(vm.notchVisible ? .red : .accentColor)
+
+            Button(action: { NSApplication.shared.terminate(nil) }) {
+                Label("종료", systemImage: "power")
+            }
+            .buttonStyle(.bordered)
+            .tint(.red)
         }
     }
 
