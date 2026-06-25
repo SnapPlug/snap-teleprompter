@@ -8,15 +8,35 @@
 
 ## 요구 사항
 
-- macOS 13.0 이상
+- **macOS 13.0 이상** (Ventura 이상 필요 — iMac 2017 등 macOS 12 이하 기기는 미지원)
 - 노치가 있는 맥북 (MacBook Pro 2021년 이후, MacBook Air M2 이후)
-- Xcode 16.0 ([Mac App Store에서 무료 설치](https://apps.apple.com/kr/app/xcode/id497799835))
 
 ---
 
 ## 설치 및 빌드
 
-### 방법 1 — Xcode만 사용 (권장)
+### 방법 1 — Command Line Tools만으로 빌드 (Xcode.app 불필요)
+
+Xcode.app 없이 **Command Line Tools**(`swiftc`)만 설치되어 있으면 빌드할 수 있습니다.
+
+**Command Line Tools 설치 확인:**
+```bash
+xcode-select --install   # 이미 설치되어 있으면 "already installed" 메시지
+```
+
+**빌드 및 실행:**
+```bash
+git clone https://github.com/SnapPlug/snap-teleprompter.git
+cd snap-teleprompter
+bash build.sh
+open SnapTeleprompter.app
+```
+
+> 처음 실행 시 Gatekeeper 경고가 뜨면 Finder에서 앱을 **우클릭 → 열기 → 열기**로 실행합니다.
+
+---
+
+### 방법 2 — Xcode로 빌드
 
 ```bash
 git clone https://github.com/SnapPlug/snap-teleprompter.git
@@ -26,7 +46,7 @@ open SnapTeleprompter.xcodeproj
 
 Xcode에서 **Run** (⌘R) 하면 바로 실행됩니다.
 
-### 방법 2 — XcodeGen 사용 (프로젝트 파일을 직접 수정하고 싶을 때)
+### 방법 3 — XcodeGen 사용 (프로젝트 파일을 직접 수정하고 싶을 때)
 
 `project.yml`을 수정한 뒤 `.xcodeproj`를 재생성할 때 사용합니다.
 
@@ -81,7 +101,7 @@ open SnapTeleprompter.xcodeproj
 
 ```
 Sources/
-├── NotchTeleprompterApp.swift   # 앱 진입점
+├── SnapTeleprompterApp.swift    # 앱 진입점
 ├── MainView.swift               # 메인 UI (대본 편집기 + 컨트롤)
 ├── TeleprompterViewModel.swift  # 재생 상태, 키보드/스크롤 이벤트, 텍스트 줄바꿈
 ├── TeleprompterOverlay.swift    # 노치 오버레이 뷰 (스크롤 텍스트)
