@@ -12,9 +12,11 @@
 		214AE9E7B6DA8387DB5336EA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED22EF2487712E9E1758A6 /* MainView.swift */; };
 		65D4C39A8E56E13ADDBD2F4F /* TeleprompterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E68B66825ECC4EC12E575C /* TeleprompterViewModel.swift */; };
 		FA73D96DABDCE3538B4B80E1 /* TeleprompterOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D273D07C770AC25E174BAD /* TeleprompterOverlay.swift */; };
+		AC000001AC000001AC000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC000002AC000002AC000002 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC000002AC000002AC000002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24D273D07C770AC25E174BAD /* TeleprompterOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterOverlay.swift; sourceTree = "<group>"; };
 		3D11004F167D00812DF83507 /* SnapTeleprompter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapTeleprompter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		556BE0DFB9B4B7A8D10910C4 /* SnapTeleprompterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapTeleprompterApp.swift; sourceTree = "<group>"; };
@@ -35,6 +37,7 @@
 		E45675A2448D63E524BD4032 = {
 			isa = PBXGroup;
 			children = (
+				AC000002AC000002AC000002 /* Assets.xcassets */,
 				FD137390B2401CADDCA11C8F /* Sources */,
 				301580E1B3ECE277517BCFA6 /* Products */,
 			);
@@ -59,6 +62,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 96BBEEA80D7F334CDB75BBDF /* Build configuration list for PBXNativeTarget "SnapTeleprompter" */;
 			buildPhases = (
+				AC000003AC000003AC000003 /* Resources */,
 				9577E5D6A3716608D46467DB /* Sources */,
 			);
 			buildRules = (
@@ -104,6 +108,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC000003AC000003AC000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC000001AC000001AC000001 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9577E5D6A3716608D46467DB /* Sources */ = {
