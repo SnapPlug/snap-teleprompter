@@ -20,48 +20,43 @@ struct BottomRoundedRect: Shape {
 struct TeleprompterOverlay: View {
     @ObservedObject var vm: TeleprompterViewModel
 
+    // P2: dynamic colors
+    private var bg: Color { vm.isDarkBackground ? .black : .white }
+    private var fg: Color { vm.isDarkBackground ? .white : .black }
+
     var body: some View {
         ZStack {
-            Color.black
+            bg
 
             if vm.scriptLines.isEmpty {
                 Text("▶ 시작을 누르면 여기에 대본이 흐릅니다")
                     .font(.system(size: 11, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.35))
+                    .foregroundColor(fg.opacity(0.35))
             } else {
                 scrollingText
             }
 
-            // Bottom fade — text enters smoothly from below
+            // Bottom fade
             VStack(spacing: 0) {
                 Spacer()
-                LinearGradient(
-                    colors: [.clear, .black],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-                .frame(height: 24)
+                LinearGradient(colors: [.clear, bg], startPoint: .top, endPoint: .bottom)
+                    .frame(height: 24)
             }
 
-            // Top fade — text exits smoothly into the notch
+            // Top fade
             VStack(spacing: 0) {
-                LinearGradient(
-                    colors: [.black, .clear],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-                .frame(height: 20)
+                LinearGradient(colors: [bg, .clear], startPoint: .top, endPoint: .bottom)
+                    .frame(height: 20)
                 Spacer()
             }
 
-            // Top-left: quit button / Top-right: status indicator
+            // Overlay controls
             VStack {
                 HStack {
-                    // × quit button — always visible, left side
                     Button(action: { NSApplication.shared.terminate(nil) }) {
                         Text("×")
                             .font(.system(size: 13, weight: .medium))
-                            .foregroundColor(.white.opacity(0.35))
+                            .foregroundColor(fg.opacity(0.35))
                             .frame(width: 20, height: 20)
                     }
                     .buttonStyle(.plain)
@@ -77,30 +72,40 @@ struct TeleprompterOverlay: View {
                     } else if !vm.scriptLines.isEmpty {
                         Image(systemName: "pause.fill")
                             .font(.system(size: 9))
-                            .foregroundColor(.white.opacity(0.5))
+                            .foregroundColor(fg.opacity(0.5))
                             .padding(8)
                     }
                 }
+
                 Spacer()
+
+                // P1: presentation timer
+                if vm.elapsedSeconds > 0 {
+                    HStack {
+                        Text(timerLabel)
+                            .font(.system(size: 10, weight: .medium, design: .monospaced))
+                            .foregroundColor(fg.opacity(0.3))
+                            .padding(.leading, 8)
+                            .padding(.bottom, 6)
+                        Spacer()
+                    }
+                }
             }
         }
         .clipShape(BottomRoundedRect(radius: 14))
-        // Tap to pause / resume (ignore taps on the quit button area)
         .onTapGesture {
             guard !vm.scriptLines.isEmpty else { return }
             vm.togglePause()
         }
     }
 
-    // VStack with vertical offset — SwiftUI handles text wrapping natively,
-    // no Canvas clipping risk.
     private var scrollingText: some View {
         GeometryReader { geo in
             VStack(alignment: .center, spacing: vm.lineHeight - CGFloat(vm.fontSize)) {
                 ForEach(Array(vm.scriptLines.enumerated()), id: \.offset) { _, line in
                     Text(line)
                         .font(.system(size: CGFloat(vm.fontSize), weight: .medium))
-                        .foregroundColor(.white)
+                        .foregroundColor(fg)
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(width: geo.size.width - 40)
@@ -110,5 +115,14 @@ struct TeleprompterOverlay: View {
             .offset(y: vm.verticalOffset)
         }
         .clipped()
+    }
+
+    // P1: MM:SS or HH:MM:SS
+    private var timerLabel: String {
+        let s = vm.elapsedSeconds
+        if s < 3600 {
+            return String(format: "%02d:%02d", s / 60, s % 60)
+        }
+        return String(format: "%d:%02d:%02d", s / 3600, (s % 3600) / 60, s % 60)
     }
 }

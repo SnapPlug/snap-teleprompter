@@ -34,6 +34,13 @@ struct MainView: View {
                 .padding(.horizontal, 20)
                 .padding(.vertical, 12)
                 .background(Color(NSColor.windowBackgroundColor))
+
+            Divider()
+
+            displaySettings
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+                .background(Color(NSColor.windowBackgroundColor))
         }
     }
 
@@ -108,6 +115,62 @@ struct MainView: View {
         }
     }
 
+    // MARK: - Display Settings (P2 + P3)
+
+    private var displaySettings: some View {
+        HStack(spacing: 20) {
+            // P2: background color
+            VStack(alignment: .leading, spacing: 3) {
+                Text("배경색")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                HStack(spacing: 6) {
+                    Button(action: { vm.isDarkBackground = true }) {
+                        Circle()
+                            .fill(Color.black)
+                            .frame(width: 18, height: 18)
+                            .overlay(
+                                Circle().strokeBorder(vm.isDarkBackground ? Color.accentColor : Color.gray.opacity(0.3), lineWidth: 2)
+                            )
+                    }
+                    .buttonStyle(.plain)
+
+                    Button(action: { vm.isDarkBackground = false }) {
+                        Circle()
+                            .fill(Color.white)
+                            .frame(width: 18, height: 18)
+                            .overlay(
+                                Circle().strokeBorder(vm.isDarkBackground ? Color.gray.opacity(0.3) : Color.accentColor, lineWidth: 2)
+                            )
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+
+            Divider().frame(height: 28)
+
+            // P3: panel width
+            VStack(alignment: .leading, spacing: 3) {
+                Text("패널 너비: \(Int(vm.panelWidth))px")
+                    .font(.caption).foregroundColor(.secondary)
+                Slider(value: $vm.panelWidth, in: 280...600)
+                    .frame(width: 110)
+            }
+
+            // P3: panel height
+            VStack(alignment: .leading, spacing: 3) {
+                Text("패널 높이: \(Int(vm.panelHeight))px")
+                    .font(.caption).foregroundColor(.secondary)
+                Slider(value: $vm.panelHeight, in: 60...220)
+                    .frame(width: 110)
+            }
+
+            Spacer()
+        }
+    }
+
+    // MARK: - Helpers
+
     private func sliderControl(
         label: String,
         value: Binding<Double>,
@@ -126,20 +189,14 @@ struct MainView: View {
 
     private var playbackButtons: some View {
         HStack(spacing: 8) {
-            Button {
-                vm.stop()
-            } label: {
+            Button { vm.stop() } label: {
                 Image(systemName: "stop.fill")
             }
             .buttonStyle(.bordered)
             .disabled(!vm.isRunning && vm.scriptLines.isEmpty)
 
             Button {
-                if vm.scriptLines.isEmpty {
-                    vm.start()
-                } else {
-                    vm.togglePause()
-                }
+                if vm.scriptLines.isEmpty { vm.start() } else { vm.togglePause() }
             } label: {
                 Image(systemName: vm.isRunning ? "pause.fill" : "play.fill")
                     .frame(width: 14)

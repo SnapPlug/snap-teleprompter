@@ -30,15 +30,29 @@ final class TeleprompterViewModel: ObservableObject {
     private var globalKeyMonitor: Any?
     private var scrollMonitor: Any?
 
-    // Panel dimensions — kept in sync with NotchWindowController
-    let panelWidth: CGFloat = 340
-    let panelHeight: CGFloat = 110
+    // Panel dimensions — user can resize (P3)
+    @Published var panelWidth: CGFloat = {
+        let v = UserDefaults.standard.double(forKey: "panelWidth")
+        return v > 0 ? CGFloat(v) : 340
+    }()
+    @Published var panelHeight: CGFloat = {
+        let v = UserDefaults.standard.double(forKey: "panelHeight")
+        return v > 0 ? CGFloat(v) : 110
+    }()
+
+    // Background color toggle (P2)
+    @Published var isDarkBackground: Bool = UserDefaults.standard.object(forKey: "isDarkBackground") as? Bool ?? true
+
+    // Presentation timer (P1)
+    @Published var elapsedSeconds: Int = 0
+    private var timerStart: CFTimeInterval = 0
+    private var timerAccumulated: CFTimeInterval = 0
 
     // Total window height including menu bar (set by NotchWindowController)
     var windowHeight: CGFloat = 147
 
     init() {
-        // Re-wrap lines whenever script is edited while the notch is open
+        // Re-wrap when script changes while notch is open
         $scriptText
             .dropFirst()
             .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
@@ -46,6 +60,37 @@ final class TeleprompterViewModel: ObservableObject {
                 guard let self, self.notchVisible else { return }
                 self.scriptLines = self.wrapScript(self.scriptText, maxWidth: self.panelWidth - 40)
             }
+            .store(in: &cancellables)
+
+        // P3: resize notch and re-wrap when panel width changes
+        $panelWidth
+            .dropFirst()
+            .debounce(for: .milliseconds(80), scheduler: RunLoop.main)
+            .sink { [weak self] newWidth in
+                guard let self else { return }
+                UserDefaults.standard.set(Double(newWidth), forKey: "panelWidth")
+                if self.notchVisible {
+                    self.notchController?.resize()
+                    self.scriptLines = self.wrapScript(self.scriptText, maxWidth: newWidth - 40)
+                }
+            }
+            .store(in: &cancellables)
+
+        // P3: resize notch when panel height changes
+        $panelHeight
+            .dropFirst()
+            .debounce(for: .milliseconds(80), scheduler: RunLoop.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                UserDefaults.standard.set(Double(self.panelHeight), forKey: "panelHeight")
+                if self.notchVisible { self.notchController?.resize() }
+            }
+            .store(in: &cancellables)
+
+        // P2: persist background color choice
+        $isDarkBackground
+            .dropFirst()
+            .sink { UserDefaults.standard.set($0, forKey: "isDarkBackground") }
             .store(in: &cancellables)
     }
 
@@ -155,17 +200,25 @@ final class TeleprompterViewModel: ObservableObject {
 
     func start() {
         guard !scriptText.isEmpty else { return }
-        // Pre-wrap text to panel width so Canvas never clips
         let usableWidth = panelWidth - 40
         scriptLines = wrapScript(scriptText, maxWidth: usableWidth)
         verticalOffset = windowHeight + 10
+        elapsedSeconds = 0
+        timerAccumulated = 0
+        timerStart = CACurrentMediaTime()
         isRunning = true
         startTicker()
     }
 
     func togglePause() {
+        if isRunning {
+            timerAccumulated += CACurrentMediaTime() - timerStart
+            stopTicker()
+        } else {
+            timerStart = CACurrentMediaTime()
+            startTicker()
+        }
         isRunning.toggle()
-        if isRunning { startTicker() } else { stopTicker() }
     }
 
     func stop() {
@@ -173,6 +226,8 @@ final class TeleprompterViewModel: ObservableObject {
         stopTicker()
         verticalOffset = windowHeight + 10
         scriptLines = []
+        elapsedSeconds = 0
+        timerAccumulated = 0
     }
 
     // MARK: - Animation
@@ -197,6 +252,7 @@ final class TeleprompterViewModel: ObservableObject {
         let dt = CGFloat(now - lastTimestamp)
         lastTimestamp = now
         verticalOffset -= pixelsPerSecond * dt
+        elapsedSeconds = Int(timerAccumulated + (now - timerStart))
         let totalHeight = CGFloat(scriptLines.count) * lineHeight
         if verticalOffset < -(totalHeight + windowHeight) {
             isRunning = false

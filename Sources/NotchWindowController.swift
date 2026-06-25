@@ -54,6 +54,24 @@ final class NotchWindowController {
         self.window = win
     }
 
+    func resize() {
+        guard let screen = NSScreen.main, let win = window else { return }
+        let menuBarH: CGFloat = screen.safeAreaInsets.top > 0
+            ? screen.safeAreaInsets.top
+            : NSStatusBar.system.thickness
+        let panelW = vm.panelWidth
+        let panelH = vm.panelHeight
+        let totalH = menuBarH + panelH
+        vm.windowHeight = totalH
+        let x = (screen.frame.width - panelW) / 2
+        let y = screen.frame.maxY - totalH
+        win.setFrame(NSRect(x: x, y: y, width: panelW, height: totalH), display: true, animate: false)
+        win.contentView = NSHostingView(
+            rootView: TeleprompterOverlay(vm: vm)
+                .frame(width: panelW, height: totalH)
+        )
+    }
+
     func hide() {
         window?.orderOut(nil)
         window = nil
