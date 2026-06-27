@@ -222,7 +222,6 @@ struct MainView: View {
             }
             .buttonStyle(.borderedProminent)
             .disabled(vm.scriptText.isEmpty)
-            .keyboardShortcut(.space, modifiers: [])
         }
     }
 

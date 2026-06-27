@@ -152,32 +152,44 @@ final class TeleprompterViewModel: ObservableObject {
     // MARK: - Key monitoring
 
     private func startKeyMonitoring() {
-        // Local monitor: fires inside our own app. Returns nil to CONSUME the event
-        // so < / > never reach the TextEditor while the notch is active.
+        // keyCode 기반 — event.characters는 한글 IME 상태에 따라 달라지므로 사용 안 함
+        // 49 = Space  43 = , (Shift → <)  47 = . (Shift → >)
         localKeyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
-            guard let self, let chars = event.characters else { return event }
-            switch chars {
-            case "<":
-                self.decreaseSpeed()
-                return nil  // consumed — TextEditor never sees it
-            case ">":
-                self.increaseSpeed()
+            guard let self else { return event }
+            let shift = event.modifierFlags.contains(.shift)
+            switch event.keyCode {
+            case 49: // Space — 재생/일시정지 토글
+                Task { @MainActor [weak self] in
+                    guard let self, !self.scriptText.isEmpty else { return }
+                    if self.isRunning {
+                        self.togglePause()
+                    } else if self.isStopped || self.scriptLines.isEmpty {
+                        self.start()
+                    } else {
+                        self.togglePause()
+                    }
+                }
+                return nil
+            case 43 where shift: // Shift+, = <
+                Task { @MainActor [weak self] in self?.decreaseSpeed() }
+                return nil
+            case 47 where shift: // Shift+. = >
+                Task { @MainActor [weak self] in self?.increaseSpeed() }
                 return nil
             default:
                 return event
             }
         }
 
-        // Global monitor: fires when another app is key (e.g. camera/recording app).
-        // Needs Input Monitoring permission; silently skipped if not granted.
+        // Global monitor: 다른 앱이 활성화됐을 때 (입력 모니터링 권한 필요)
         globalKeyMonitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] event in
-            guard let chars = event.characters else { return }
-            Task { @MainActor [weak self] in
-                switch chars {
-                case "<": self?.decreaseSpeed()
-                case ">": self?.increaseSpeed()
-                default: break
-                }
+            let shift = event.modifierFlags.contains(.shift)
+            switch event.keyCode {
+            case 43 where shift:
+                Task { @MainActor [weak self] in self?.decreaseSpeed() }
+            case 47 where shift:
+                Task { @MainActor [weak self] in self?.increaseSpeed() }
+            default: break
             }
         }
 
