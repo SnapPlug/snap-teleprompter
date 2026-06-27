@@ -12,7 +12,10 @@ private final class NotchOverlayWindow: NSWindow {
 final class NotchWindowController {
     var window: NSWindow?
     private let vm: TeleprompterViewModel
-    private var spaceObserver: Any?
+
+    // Fires frequently to keep the overlay on top across all Spaces and full-screen transitions.
+    // Space swipe animations last ~300ms; 200ms interval ensures < 1 frame of invisibility.
+    private var keepFrontTimer: Timer?
 
     init(vm: TeleprompterViewModel) {
         self.vm = vm
@@ -45,7 +48,6 @@ final class NotchWindowController {
         win.backgroundColor = .clear
         win.hasShadow = true
         win.ignoresMouseEvents = false
-        // fullScreenAuxiliary — 전체화면 Space에도 진입
         win.collectionBehavior = [.canJoinAllSpaces, .stationary, .ignoresCycle, .fullScreenAuxiliary]
         win.sharingType = vm.hideFromScreenShare ? .none : .readWrite
 
@@ -56,16 +58,12 @@ final class NotchWindowController {
         win.orderFrontRegardless()
         self.window = win
 
-        // 전체화면 전환 등 Space가 바뀔 때마다 최상단으로 다시 올림
-        spaceObserver = NSWorkspace.shared.notificationCenter.addObserver(
-            forName: NSWorkspace.activeSpaceDidChangeNotification,
-            object: nil,
-            queue: .main
-        ) { [weak self] _ in
-            Task { @MainActor [weak self] in
-                self?.window?.orderFrontRegardless()
-            }
+        // Poll at 200ms — covers the ~300ms Space-swipe animation gap.
+        // .common mode ensures the timer fires even during trackpad scroll tracking.
+        keepFrontTimer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [weak self] _ in
+            Task { @MainActor [weak self] in self?.window?.orderFrontRegardless() }
         }
+        RunLoop.main.add(keepFrontTimer!, forMode: .common)
     }
 
     func resize() {
@@ -91,10 +89,8 @@ final class NotchWindowController {
     }
 
     func hide() {
-        if let obs = spaceObserver {
-            NSWorkspace.shared.notificationCenter.removeObserver(obs)
-            spaceObserver = nil
-        }
+        keepFrontTimer?.invalidate()
+        keepFrontTimer = nil
         window?.orderOut(nil)
         window = nil
     }
