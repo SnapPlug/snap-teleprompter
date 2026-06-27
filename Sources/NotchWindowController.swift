@@ -12,9 +12,6 @@ private final class NotchOverlayWindow: NSWindow {
 final class NotchWindowController {
     var window: NSWindow?
     private let vm: TeleprompterViewModel
-
-    // Fires frequently to keep the overlay on top across all Spaces and full-screen transitions.
-    // Space swipe animations last ~300ms; 200ms interval ensures < 1 frame of invisibility.
     private var keepFrontTimer: Timer?
 
     init(vm: TeleprompterViewModel) {
@@ -48,7 +45,9 @@ final class NotchWindowController {
         win.backgroundColor = .clear
         win.hasShadow = true
         win.ignoresMouseEvents = false
-        win.collectionBehavior = [.canJoinAllSpaces, .stationary, .ignoresCycle, .fullScreenAuxiliary]
+        // .stationary 제거 — full-screen Space 전환 시 새 Space를 따라가지 못하는 원인
+        // .canJoinAllSpaces + .fullScreenAuxiliary 조합으로 모든 Space에 진입
+        win.collectionBehavior = [.canJoinAllSpaces, .ignoresCycle, .fullScreenAuxiliary]
         win.sharingType = vm.hideFromScreenShare ? .none : .readWrite
 
         win.contentView = NSHostingView(
@@ -58,12 +57,17 @@ final class NotchWindowController {
         win.orderFrontRegardless()
         self.window = win
 
-        // Poll at 200ms — covers the ~300ms Space-swipe animation gap.
-        // .common mode ensures the timer fires even during trackpad scroll tracking.
-        keepFrontTimer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [weak self] _ in
-            Task { @MainActor [weak self] in self?.window?.orderFrontRegardless() }
+        // Timer(timeInterval:) + RunLoop.main.add 패턴 사용:
+        // scheduledTimer는 .default 모드로 자동 등록되므로 이중 등록 방지를 위해 이 방식 사용.
+        // .common 모드 = 트랙패드 스크롤/드래그 중에도 타이머가 멈추지 않음.
+        // MainActor.assumeIsolated = Task 없이 동기 호출 → 애니메이션 중 지연 없음.
+        let timer = Timer(timeInterval: 0.2, repeats: true) { [weak self] _ in
+            MainActor.assumeIsolated {
+                self?.window?.orderFrontRegardless()
+            }
         }
-        RunLoop.main.add(keepFrontTimer!, forMode: .common)
+        RunLoop.main.add(timer, forMode: .common)
+        keepFrontTimer = timer
     }
 
     func resize() {
