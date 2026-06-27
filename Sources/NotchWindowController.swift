@@ -44,7 +44,7 @@ final class NotchWindowController {
         win.backgroundColor = .clear
         win.hasShadow = true
         win.ignoresMouseEvents = false
-        win.collectionBehavior = [.canJoinAllSpaces, .stationary, .ignoresCycle]
+        win.collectionBehavior = [.canJoinAllSpaces, .stationary, .ignoresCycle, .fullScreenAuxiliary]
         win.sharingType = vm.hideFromScreenShare ? .none : .readWrite
 
         win.contentView = NSHostingView(
