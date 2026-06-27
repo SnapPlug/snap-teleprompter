@@ -7,63 +7,66 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		064FC26FCB2947330DB6AB9C /* NotchWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD8B51EC00E834F3573BD4 /* NotchWindowController.swift */; };
-		0BFC5F9CE1884CED5B68473D /* SnapTeleprompterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556BE0DFB9B4B7A8D10910C4 /* SnapTeleprompterApp.swift */; };
-		214AE9E7B6DA8387DB5336EA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED22EF2487712E9E1758A6 /* MainView.swift */; };
-		65D4C39A8E56E13ADDBD2F4F /* TeleprompterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E68B66825ECC4EC12E575C /* TeleprompterViewModel.swift */; };
-		FA73D96DABDCE3538B4B80E1 /* TeleprompterOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D273D07C770AC25E174BAD /* TeleprompterOverlay.swift */; };
-		AC000001AC000001AC000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC000002AC000002AC000002 /* Assets.xcassets */; };
+		2F087E5CEC8C4BFB74501964 /* NotchWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC73533BCD4B3535AD1B2C /* NotchWindowController.swift */; };
+		35214DBCBE96995EB3EC299F /* SnapTeleprompterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2D3D335A9BB7BFA5786ED /* SnapTeleprompterApp.swift */; };
+		3FEBC8392120F4636D2F77A3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4E4CA6920E61C058D9F5EC /* MainView.swift */; };
+		508D6A0443658B2395C46A44 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = 6866E6AF83F9F8EA2D8A8D37 /* Resources */; };
+		A37A8451DEAC06AD749F1B8B /* TeleprompterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B2E285B29C3C98F692F5EE /* TeleprompterViewModel.swift */; };
+		D0AB104A6337F9415C600335 /* TeleprompterOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B601127A2CE1553C67F97B /* TeleprompterOverlay.swift */; };
+		EBC841744E2DF8D970C67787 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B087B73E1F97125421817C /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AC000002AC000002AC000002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		24D273D07C770AC25E174BAD /* TeleprompterOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterOverlay.swift; sourceTree = "<group>"; };
-		3D11004F167D00812DF83507 /* SnapTeleprompter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapTeleprompter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		556BE0DFB9B4B7A8D10910C4 /* SnapTeleprompterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapTeleprompterApp.swift; sourceTree = "<group>"; };
-		7BED22EF2487712E9E1758A6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		86CD8B51EC00E834F3573BD4 /* NotchWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchWindowController.swift; sourceTree = "<group>"; };
-		92E68B66825ECC4EC12E575C /* TeleprompterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterViewModel.swift; sourceTree = "<group>"; };
+		35B087B73E1F97125421817C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		5A4E4CA6920E61C058D9F5EC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		6866E6AF83F9F8EA2D8A8D37 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = SOURCE_ROOT; };
+		73CC73533BCD4B3535AD1B2C /* NotchWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchWindowController.swift; sourceTree = "<group>"; };
+		D7B601127A2CE1553C67F97B /* TeleprompterOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterOverlay.swift; sourceTree = "<group>"; };
+		F0A2D3D335A9BB7BFA5786ED /* SnapTeleprompterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapTeleprompterApp.swift; sourceTree = "<group>"; };
+		F59545D789D30C9E1F480A2A /* SnapTeleprompter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapTeleprompter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6B2E285B29C3C98F692F5EE /* TeleprompterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		301580E1B3ECE277517BCFA6 /* Products */ = {
+		0332CDC01A87E5E8505CF2DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3D11004F167D00812DF83507 /* SnapTeleprompter.app */,
+				F59545D789D30C9E1F480A2A /* SnapTeleprompter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E45675A2448D63E524BD4032 = {
+		2046FF949696335262E8A107 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				AC000002AC000002AC000002 /* Assets.xcassets */,
-				FD137390B2401CADDCA11C8F /* Sources */,
-				301580E1B3ECE277517BCFA6 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		FD137390B2401CADDCA11C8F /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				7BED22EF2487712E9E1758A6 /* MainView.swift */,
-				556BE0DFB9B4B7A8D10910C4 /* SnapTeleprompterApp.swift */,
-				86CD8B51EC00E834F3573BD4 /* NotchWindowController.swift */,
-				24D273D07C770AC25E174BAD /* TeleprompterOverlay.swift */,
-				92E68B66825ECC4EC12E575C /* TeleprompterViewModel.swift */,
+				5A4E4CA6920E61C058D9F5EC /* MainView.swift */,
+				73CC73533BCD4B3535AD1B2C /* NotchWindowController.swift */,
+				35B087B73E1F97125421817C /* OnboardingView.swift */,
+				F0A2D3D335A9BB7BFA5786ED /* SnapTeleprompterApp.swift */,
+				D7B601127A2CE1553C67F97B /* TeleprompterOverlay.swift */,
+				F6B2E285B29C3C98F692F5EE /* TeleprompterViewModel.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		37B5ACA454BC384AE91D457A = {
+			isa = PBXGroup;
+			children = (
+				6866E6AF83F9F8EA2D8A8D37 /* Resources */,
+				2046FF949696335262E8A107 /* Sources */,
+				0332CDC01A87E5E8505CF2DD /* Products */,
+			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		39AF725C18C3BC4AD9ED9D9C /* SnapTeleprompter */ = {
+		50E43538928AC9C0AFF58650 /* SnapTeleprompter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 96BBEEA80D7F334CDB75BBDF /* Build configuration list for PBXNativeTarget "SnapTeleprompter" */;
+			buildConfigurationList = 9CB66A2E39D37082E3A161AB /* Build configuration list for PBXNativeTarget "SnapTeleprompter" */;
 			buildPhases = (
-				AC000003AC000003AC000003 /* Resources */,
-				9577E5D6A3716608D46467DB /* Sources */,
+				CDF733416C333ECF75157B7D /* Sources */,
+				37C7D55458F12F38DC7CF49D /* Resources */,
 			);
 			buildRules = (
 			);
@@ -73,164 +76,71 @@
 			packageProductDependencies = (
 			);
 			productName = SnapTeleprompter;
-			productReference = 3D11004F167D00812DF83507 /* SnapTeleprompter.app */;
+			productReference = F59545D789D30C9E1F480A2A /* SnapTeleprompter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		057BF39D063C7D7C71EB168A /* Project object */ = {
+		AC278703A7CC60EF0756639A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
-					39AF725C18C3BC4AD9ED9D9C = {
+					50E43538928AC9C0AFF58650 = {
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 77E89E359D98818E5F87DAF6 /* Build configuration list for PBXProject "SnapTeleprompter" */;
+			buildConfigurationList = 29E64F8B0FCE1C902C293962 /* Build configuration list for PBXProject "SnapTeleprompter" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
 				en,
 			);
-			mainGroup = E45675A2448D63E524BD4032;
+			mainGroup = 37B5ACA454BC384AE91D457A;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 301580E1B3ECE277517BCFA6 /* Products */;
+			productRefGroup = 0332CDC01A87E5E8505CF2DD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				39AF725C18C3BC4AD9ED9D9C /* SnapTeleprompter */,
+				50E43538928AC9C0AFF58650 /* SnapTeleprompter */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AC000003AC000003AC000003 /* Resources */ = {
+		37C7D55458F12F38DC7CF49D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC000001AC000001AC000001 /* Assets.xcassets in Resources */,
+				508D6A0443658B2395C46A44 /* Resources in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9577E5D6A3716608D46467DB /* Sources */ = {
+		CDF733416C333ECF75157B7D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				214AE9E7B6DA8387DB5336EA /* MainView.swift in Sources */,
-				0BFC5F9CE1884CED5B68473D /* SnapTeleprompterApp.swift in Sources */,
-				064FC26FCB2947330DB6AB9C /* NotchWindowController.swift in Sources */,
-				FA73D96DABDCE3538B4B80E1 /* TeleprompterOverlay.swift in Sources */,
-				65D4C39A8E56E13ADDBD2F4F /* TeleprompterViewModel.swift in Sources */,
+				3FEBC8392120F4636D2F77A3 /* MainView.swift in Sources */,
+				2F087E5CEC8C4BFB74501964 /* NotchWindowController.swift in Sources */,
+				EBC841744E2DF8D970C67787 /* OnboardingView.swift in Sources */,
+				35214DBCBE96995EB3EC299F /* SnapTeleprompterApp.swift in Sources */,
+				D0AB104A6337F9415C600335 /* TeleprompterOverlay.swift in Sources */,
+				A37A8451DEAC06AD749F1B8B /* TeleprompterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		28BFF3E3242321CE432B6B0A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.9;
-			};
-			name = Release;
-		};
-		4BC0F0315368AA73A70ED45D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = SnapTeleprompter.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				ENABLE_HARDENED_RUNTIME = NO;
-				INFOPLIST_FILE = Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.snapavatar.snap-teleprompter";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.9;
-			};
-			name = Debug;
-		};
-		E7FF2A54316F41CFDE3E6589 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = SnapTeleprompter.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				ENABLE_HARDENED_RUNTIME = NO;
-				INFOPLIST_FILE = Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.snapavatar.snap-teleprompter";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.9;
-			};
-			name = Release;
-		};
-		FE23B641D972123C1716B09B /* Debug */ = {
+		166440D46C65BBECAE35F3D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -293,28 +203,122 @@
 			};
 			name = Debug;
 		};
+		76A9B2616DFDF910E21FB371 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SnapTeleprompter.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.snapavatar.snap-teleprompter";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		DBFCE6AB4A6D2D7320D26AF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SnapTeleprompter.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.snapavatar.snap-teleprompter";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		E52C2D228DA656CDA61C471F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		77E89E359D98818E5F87DAF6 /* Build configuration list for PBXProject "SnapTeleprompter" */ = {
+		29E64F8B0FCE1C902C293962 /* Build configuration list for PBXProject "SnapTeleprompter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FE23B641D972123C1716B09B /* Debug */,
-				28BFF3E3242321CE432B6B0A /* Release */,
+				166440D46C65BBECAE35F3D1 /* Debug */,
+				E52C2D228DA656CDA61C471F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		96BBEEA80D7F334CDB75BBDF /* Build configuration list for PBXNativeTarget "SnapTeleprompter" */ = {
+		9CB66A2E39D37082E3A161AB /* Build configuration list for PBXNativeTarget "SnapTeleprompter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4BC0F0315368AA73A70ED45D /* Debug */,
-				E7FF2A54316F41CFDE3E6589 /* Release */,
+				DBFCE6AB4A6D2D7320D26AF0 /* Debug */,
+				76A9B2616DFDF910E21FB371 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 057BF39D063C7D7C71EB168A /* Project object */;
+	rootObject = AC278703A7CC60EF0756639A /* Project object */;
 }
