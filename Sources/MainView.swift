@@ -209,7 +209,13 @@ struct MainView: View {
             .disabled(!vm.isRunning && vm.scriptLines.isEmpty)
 
             Button {
-                if vm.scriptLines.isEmpty { vm.start() } else { vm.togglePause() }
+                if vm.isRunning {
+                    vm.togglePause()
+                } else if vm.isStopped || vm.scriptLines.isEmpty {
+                    vm.start()
+                } else {
+                    vm.togglePause()
+                }
             } label: {
                 Image(systemName: vm.isRunning ? "pause.fill" : "play.fill")
                     .frame(width: 14)

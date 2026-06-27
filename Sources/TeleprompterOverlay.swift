@@ -95,7 +95,11 @@ struct TeleprompterOverlay: View {
         .clipShape(BottomRoundedRect(radius: 14))
         .onTapGesture {
             guard !vm.scriptLines.isEmpty else { return }
-            vm.togglePause()
+            if vm.isStopped {
+                vm.start()
+            } else {
+                vm.togglePause()
+            }
         }
     }
 

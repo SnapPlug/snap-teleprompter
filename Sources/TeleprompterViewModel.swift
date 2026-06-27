@@ -46,6 +46,9 @@ final class TeleprompterViewModel: ObservableObject {
     // Screen share privacy — hide notch from Zoom/Teams/recordings (default ON)
     @Published var hideFromScreenShare: Bool = UserDefaults.standard.object(forKey: "hideFromScreenShare") as? Bool ?? true
 
+    // Playback stopped flag — distinguishes "stopped" from "paused" for play button logic
+    @Published var isStopped: Bool = false
+
     // Presentation timer (P1)
     @Published var elapsedSeconds: Int = 0
     private var timerStart: CFTimeInterval = 0
@@ -218,6 +221,7 @@ final class TeleprompterViewModel: ObservableObject {
         elapsedSeconds = 0
         timerAccumulated = 0
         timerStart = CACurrentMediaTime()
+        isStopped = false
         isRunning = true
         startTicker()
     }
@@ -235,11 +239,12 @@ final class TeleprompterViewModel: ObservableObject {
 
     func stop() {
         isRunning = false
+        isStopped = true
         stopTicker()
         verticalOffset = windowHeight + 10
-        scriptLines = []
         elapsedSeconds = 0
         timerAccumulated = 0
+        // scriptLines 유지 — 오버레이에서 안내 텍스트가 나오지 않도록
     }
 
     // MARK: - Animation
