@@ -19,6 +19,7 @@ swiftc \
     Sources/SnapTeleprompterApp.swift \
     Sources/MainView.swift \
     Sources/NotchWindowController.swift \
+    Sources/OnboardingView.swift \
     Sources/TeleprompterOverlay.swift \
     Sources/TeleprompterViewModel.swift \
     -sdk "${SDK}" \

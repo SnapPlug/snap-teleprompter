@@ -4,6 +4,8 @@ import UniformTypeIdentifiers
 struct MainView: View {
     @ObservedObject var vm: TeleprompterViewModel
 
+    @State private var showOnboarding = false
+
     var body: some View {
         VStack(spacing: 0) {
             toolbar
@@ -42,6 +44,14 @@ struct MainView: View {
                 .padding(.vertical, 10)
                 .background(Color(NSColor.windowBackgroundColor))
         }
+        .onAppear {
+            if !UserDefaults.standard.bool(forKey: "hasSeenOnboarding") {
+                showOnboarding = true
+            }
+        }
+        .sheet(isPresented: $showOnboarding) {
+            OnboardingView(isPresented: $showOnboarding)
+        }
     }
 
     // MARK: - Toolbar
@@ -55,6 +65,12 @@ struct MainView: View {
                 .font(.headline)
 
             Spacer()
+
+            Button(action: { showOnboarding = true }) {
+                Image(systemName: "questionmark.circle")
+            }
+            .buttonStyle(.bordered)
+            .help("사용법 보기")
 
             Button(action: openFile) {
                 Label("파일 열기", systemImage: "doc.text")
