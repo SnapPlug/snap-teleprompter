@@ -165,6 +165,19 @@ struct MainView: View {
                     .frame(width: 110)
             }
 
+            Divider().frame(height: 28)
+
+            // Screen share privacy toggle
+            VStack(alignment: .leading, spacing: 3) {
+                Text("화면 공유 숨김")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Toggle("", isOn: $vm.hideFromScreenShare)
+                    .toggleStyle(.switch)
+                    .scaleEffect(0.75, anchor: .leading)
+                    .frame(width: 44)
+            }
+
             Spacer()
         }
     }

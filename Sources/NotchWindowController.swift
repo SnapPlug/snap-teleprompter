@@ -45,6 +45,7 @@ final class NotchWindowController {
         win.hasShadow = true
         win.ignoresMouseEvents = false
         win.collectionBehavior = [.canJoinAllSpaces, .stationary, .ignoresCycle]
+        win.sharingType = vm.hideFromScreenShare ? .none : .readWrite
 
         win.contentView = NSHostingView(
             rootView: TeleprompterOverlay(vm: vm)
@@ -70,6 +71,10 @@ final class NotchWindowController {
             rootView: TeleprompterOverlay(vm: vm)
                 .frame(width: panelW, height: totalH)
         )
+    }
+
+    func updateSharingType() {
+        window?.sharingType = vm.hideFromScreenShare ? .none : .readWrite
     }
 
     func hide() {

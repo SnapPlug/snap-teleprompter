@@ -43,6 +43,9 @@ final class TeleprompterViewModel: ObservableObject {
     // Background color toggle (P2)
     @Published var isDarkBackground: Bool = UserDefaults.standard.object(forKey: "isDarkBackground") as? Bool ?? true
 
+    // Screen share privacy — hide notch from Zoom/Teams/recordings (default ON)
+    @Published var hideFromScreenShare: Bool = UserDefaults.standard.object(forKey: "hideFromScreenShare") as? Bool ?? true
+
     // Presentation timer (P1)
     @Published var elapsedSeconds: Int = 0
     private var timerStart: CFTimeInterval = 0
@@ -91,6 +94,15 @@ final class TeleprompterViewModel: ObservableObject {
         $isDarkBackground
             .dropFirst()
             .sink { UserDefaults.standard.set($0, forKey: "isDarkBackground") }
+            .store(in: &cancellables)
+
+        // Screen share privacy: update window sharingType immediately
+        $hideFromScreenShare
+            .dropFirst()
+            .sink { [weak self] value in
+                UserDefaults.standard.set(value, forKey: "hideFromScreenShare")
+                self?.notchController?.updateSharingType()
+            }
             .store(in: &cancellables)
     }
 
